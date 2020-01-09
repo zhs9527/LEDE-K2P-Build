@@ -37,8 +37,6 @@ jobs:
         sudo rm -rf /usr/share/dotnet /etc/apt/sources.list.d/*
         sudo swapoff /swapfile
         sudo rm -f /swapfile
-        #docker rmi `docker images -q`
-        #sudo -E apt-get -q purge azure-cli ghc* zulu* hhvm llvm* firefox google* dotnet* powershell openjdk* mysql* php*
         sudo -E apt-get -qq update
         sudo -E apt-get -qq install build-essential asciidoc binutils bzip2 gawk gettext git libncurses5-dev libz-dev patch unzip zlib1g-dev lib32gcc1 libc6-dev-i386 subversion flex uglifyjs git-core gcc-multilib p7zip p7zip-full msmtp libssl-dev texinfo libglib2.0-dev xmlto qemu-utils upx libelf-dev autoconf automake libtool autopoint device-tree-compiler
         sudo -E apt-get -qq autoremove --purge
@@ -48,7 +46,7 @@ jobs:
 
     - name: Clone source code
       env: 
-        REPO_URL: https://github.com/xzsk2/lede
+        REPO_URL: https://github.com/coolsnowwolf/lede
         REPO_BRANCH: master
       run: git clone --depth 1 $REPO_URL -b $REPO_BRANCH openwrt
 
@@ -69,9 +67,6 @@ jobs:
         cd openwrt
         ../$DIY_SH
         make defconfig
-
-#    - name: SSH connection to Actions
-#      uses: P3TERX/debugger-action@master
 
     - name: Download package
       run: |
