@@ -5,5 +5,5 @@
 #   Author: P3TERX
 #   Blog: https://p3terx.com
 #=================================================
-# Modify default IP
-#sed -i 's/192.168.1.1/192.168.50.5/g' package/base-files/files/bin/config_generate
+Modify default Size
+sed -i 's/0xf60000/0x1f60000/g' target/linux/ramips/dts/mt7621_phicomm_k2p.dts
